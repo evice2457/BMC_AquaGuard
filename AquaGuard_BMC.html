@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AquaGuard — Business Model Canvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --teal: #1D9E75;
+    --blue: #378ADD;
+    --purple: #7F77DD;
+    --amber: #EF9F27;
+    --coral: #D85A30;
+    --bg: #F8F9FB;
+    --card: #FFFFFF;
+    --border: #E2E6ED;
+    --text: #1B2A4A;
+    --text2: #64748B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display { font-family: 'DM Sans', sans-serif; }
+
+  .doc {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 28px 56px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 22px;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo {
+    width: 52px; height: 52px;
+    flex: 0 0 52px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+  }
+  .title { font-size: 28px; font-weight: 600; letter-spacing: -0.3px; }
+  .subtitle { font-size: 14px; font-weight: 500; color: var(--teal); margin-top: 1px; }
+  .tagline { font-size: 12px; color: var(--text2); margin-top: 3px; }
+  .header-right { text-align: right; font-size: 12px; color: var(--text2); font-weight: 500; }
+
+  /* ---------- TAB NAV ---------- */
+  .tab-nav {
+    display: flex;
+    gap: 4px;
+    margin: 26px 0 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab {
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+    padding: 10px 16px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s;
+  }
+  .tab:hover { color: var(--navy); }
+  .tab.active { color: var(--navy); font-weight: 600; border-bottom-color: var(--teal); }
+
+  /* ---------- PHASE INTRO ---------- */
+  .phase-intro { margin: 18px 0 14px; }
+  .phase-label { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; }
+  .phase-sub { font-size: 12.5px; color: var(--text2); margin-top: 3px; max-width: 760px; }
+
+  /* ---------- BMC GRID ---------- */
+  .bmc-phase { opacity: 0; transition: opacity 0.2s ease; }
+  .bmc-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 6px;
+  }
+  .block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--blue);
+    border-radius: 4px;
+    padding: 10px 11px 12px;
+  }
+  .block-label {
+    text-transform: uppercase;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: var(--text2);
+    margin-bottom: 7px;
+  }
+  .block ul { list-style: none; }
+  .block li {
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 2.5px 0 2.5px 11px;
+    position: relative;
+    color: var(--text);
+  }
+  .block li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .block-partners   { grid-column: 1 / 3;  grid-row: 1 / 3; }
+  .block-activities { grid-column: 3 / 5;  grid-row: 1 / 2; }
+  .block-vp         { grid-column: 5 / 7;  grid-row: 1 / 3; background: #FAFAFE; }
+  .block-relations  { grid-column: 7 / 9;  grid-row: 1 / 2; }
+  .block-segments   { grid-column: 9 / 11; grid-row: 1 / 3; }
+  .block-resources  { grid-column: 3 / 5;  grid-row: 2 / 3; }
+  .block-channels   { grid-column: 7 / 9;  grid-row: 2 / 3; }
+  .block-costs      { grid-column: 1 / 6;  grid-row: 3 / 4; }
+  .block-revenue    { grid-column: 6 / 11; grid-row: 3 / 4; }
+
+  .block-costs ul, .block-revenue ul {
+    columns: 2;
+    column-gap: 22px;
+  }
+  .block-costs li, .block-revenue li { break-inside: avoid; }
+
+  /* ---------- BADGES ---------- */
+  .badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+    vertical-align: middle;
+    letter-spacing: 0.3px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .badge-new { background: #E1F5EE; color: #085041; }
+  .badge-new-p3 { background: #EEEDFE; color: #3C3489; }
+  .badge-primary { background: #FCEBD2; color: #8A5210; }
+
+  /* ---------- ROADMAP ---------- */
+  .section-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 40px 0 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .rm-phase {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 15px;
+  }
+  .rm-phase h3 {
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .rm-phase .rm-tag { font-size: 11px; color: var(--text2); margin-bottom: 14px; }
+  .rm-col-label {
+    text-transform: uppercase;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    margin: 12px 0 6px;
+  }
+  .rm-col-label.product { color: var(--blue); }
+  .rm-col-label.business { color: var(--teal); }
+  .rm-phase ul { list-style: none; }
+  .rm-phase li {
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 2.5px 0 2.5px 11px;
+    position: relative;
+  }
+  .rm-phase li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .rm-1 { border-top: 3px solid var(--blue); }
+  .rm-2 { border-top: 3px solid var(--teal); }
+  .rm-3 { border-top: 3px solid var(--purple); }
+
+  /* ---------- DELTA TABLE ---------- */
+  .delta-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .delta-table th {
+    background: var(--navy);
+    color: #fff;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    padding: 11px 12px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .delta-table td {
+    padding: 11px 12px;
+    vertical-align: top;
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .delta-table tbody tr:nth-child(even) { background: var(--bg); }
+  .delta-table td.col-block { font-weight: 600; color: var(--navy); white-space: nowrap; }
+  .delta-table td.col-p2 { border-left: 3px solid var(--teal); }
+  .delta-table td.col-p3 { border-left: 3px solid var(--purple); }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .footer .f-strong { color: var(--navy); font-weight: 500; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .bmc-grid { grid-template-columns: repeat(2, 1fr); }
+    .bmc-grid > .block { grid-column: auto !important; grid-row: auto !important; }
+    .block-costs ul, .block-revenue ul { columns: 1; }
+    .roadmap-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 767px) {
+    .doc { padding: 22px 16px 40px; }
+    .header { flex-direction: column; align-items: flex-start; }
+    .header-right { text-align: left; }
+    .bmc-grid { grid-template-columns: 1fr; }
+    .bmc-grid > .block { grid-column: auto !important; grid-row: auto !important; }
+    .block-costs ul, .block-revenue ul { columns: 1; }
+    .roadmap-grid { grid-template-columns: 1fr; }
+    .delta-table { font-size: 11px; }
+    .delta-table th, .delta-table td { padding: 8px 9px; }
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    body { background: #fff; }
+    .doc { max-width: none; padding: 0; }
+    .tab-nav { display: none; }
+    .bmc-phase { display: block !important; opacity: 1 !important; page-break-after: always; }
+    .roadmap-section { page-break-before: always; }
+    .delta-section { page-break-before: always; }
+    .block, .rm-phase, .delta-table { box-shadow: none; }
+    .header { border-bottom: 2px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- SECTION 1 — HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">AG</div>
+      <div>
+        <div class="title">AquaGuard</div>
+        <div class="subtitle">Business Model Canvas</div>
+        <div class="tagline">A Mobile-Based Emergency Rescue Support System</div>
+      </div>
+    </div>
+    <div class="header-right">HCMUT · March 2026</div>
+  </header>
+
+  <!-- SECTION 2 — PHASE NAVIGATION -->
+  <nav class="tab-nav" id="tabNav">
+    <button class="tab active" data-phase="0">Phase 1 — MVP &amp; Research</button>
+    <button class="tab" data-phase="1">Phase 2 — Full Deployment</button>
+    <button class="tab" data-phase="2">Phase 3 — AI + Drone</button>
+  </nav>
+
+  <!-- SECTION 3 — BMC GRID (rendered by JS) -->
+  <div id="bmcContainer"></div>
+
+  <!-- SECTION 4 — ROADMAP -->
+  <section class="roadmap-section">
+    <h2 class="section-title">Product &amp; Business Roadmap</h2>
+    <div class="roadmap-grid">
+
+      <div class="rm-phase rm-1">
+        <h3>Phase 1 — Foundation</h3>
+        <div class="rm-tag">MVP &amp; Research</div>
+        <div class="rm-col-label product">Product milestones</div>
+        <ul>
+          <li>iOS app (SwiftUI) — SOS, GPS tracking, flood map live</li>
+          <li>React Web dashboard for rescue admins</li>
+          <li>Node.js + PostgreSQL 16 + Firebase + WebSocket backend</li>
+          <li>4-level flood zone severity classification system</li>
+          <li>Offline resilience — auto-reconnect + HTTP polling fallback</li>
+          <li>OSRM routing + Leaflet map visualization</li>
+        </ul>
+        <div class="rm-col-label business">Business milestones</div>
+        <ul>
+          <li>548+ survey respondents across 22 provinces</li>
+          <li>91 field users, ~100 registered testers active</li>
+          <li>OISP 2025 First Prize won</li>
+          <li>EPICS 2026 First Prize + $500 USD grant received</li>
+          <li>Endorsements: Thiền viện Vạn Hạnh + Quỹ Đất Lành secured</li>
+          <li>1,400+ followers, 18,000+ content views</li>
+        </ul>
+      </div>
+
+      <div class="rm-phase rm-2">
+        <h3>Phase 2 — Deployment</h3>
+        <div class="rm-tag">Full Product · Real Rescue</div>
+        <div class="rm-col-label product">Product milestones</div>
+        <ul>
+          <li>Android app launch — full feature parity with iOS</li>
+          <li>Web PWA rollout — browser access, no install needed</li>
+          <li>White-label system for provincial government deployment</li>
+          <li>Multi-province national-scale rescue coordination</li>
+          <li>Post-disaster audit trail and analytics reporting module</li>
+          <li>B2B flood alert API — data sold to telcos and weather apps</li>
+        </ul>
+        <div class="rm-col-label business">Business milestones</div>
+        <ul>
+          <li>Company legally registered — IP protection, banking</li>
+          <li>First provincial government contract signed ($50K–200K/year)</li>
+          <li>UNDP / OCHA / EU DG ECHO grant applications active</li>
+          <li>NGO SaaS subscriptions — Red Cross VN, CARE, Oxfam</li>
+          <li>First full-time salaried team members</li>
+          <li>IFRC and OCHA humanitarian forum participation</li>
+        </ul>
+      </div>
+
+      <div class="rm-phase rm-3">
+        <h3>Phase 3 — AI + Drone</h3>
+        <div class="rm-tag">Intelligent Infrastructure · SEA Expansion</div>
+        <div class="rm-col-label product">Product milestones</div>
+        <ul>
+          <li>Drone mesh WiFi — aerial network for connectivity-loss disaster zones</li>
+          <li>Drone rescue supervision — real-time aerial situational awareness</li>
+          <li>Starlink satellite integration — FANET backbone established</li>
+          <li>AI rescue dispatch — ML routing for optimal team deployment</li>
+          <li>AI flood prediction — historical SOS data hotspot mapping</li>
+          <li>Multi-country localization — Philippines, Indonesia, Thailand</li>
+        </ul>
+        <div class="rm-col-label business">Business milestones</div>
+        <ul>
+          <li>SaaS licensing to SEA regional governments</li>
+          <li>Insurance data B2B API — anonymized flood extent licensing live</li>
+          <li>Drone-as-a-Service model launched</li>
+          <li>UN and ASEAN climate resilience program funding secured</li>
+          <li>Open-source core released for global humanitarian adoption</li>
+          <li>AI premium analytics tier launched for authorities</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5 — DELTA COMPARISON TABLE -->
+  <section class="delta-section">
+    <h2 class="section-title">Evolution Delta — What Changes Across Phases</h2>
+    <table class="delta-table">
+      <thead>
+        <tr>
+          <th>Block</th>
+          <th>Phase 1 · MVP</th>
+          <th>Phase 2 · Deployment</th>
+          <th>Phase 3 · AI + Drone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-block">Key Partners</td>
+          <td>HCMUT, Google APIs, Vạn Hạnh, Quỹ Đất Lành, NCHMF, OSM VN</td>
+          <td class="col-p2">+ Red Cross VN, Provincial Gov, Viettel/VNPT, UNDP/OCHA/EU DG ECHO</td>
+          <td class="col-p3">+ Drone manufacturers, Starlink, Aviation Authority, ASEAN bodies, Insurance cos, SEA govs</td>
+        </tr>
+        <tr>
+          <td class="col-block">Key Activities</td>
+          <td>iOS dev, backend build, SOS system, field research, grant writing</td>
+          <td class="col-p2">+ Android launch, Web PWA, white-label system, gov procurement, B2B API</td>
+          <td class="col-p3">+ Drone mesh WiFi, AI dispatch, AI flood prediction, FANET, multi-country localization</td>
+        </tr>
+        <tr>
+          <td class="col-block">Value Propositions</td>
+          <td>SOS + GPS, live tracking, multi-role platform, offline resilience, audit trail</td>
+          <td class="col-p2">+ White-label for provinces, B2B alert API, proven community validation</td>
+          <td class="col-p3">+ Drone connectivity layer, aerial supervision, AI dispatch, AI prediction, insurance API</td>
+        </tr>
+        <tr>
+          <td class="col-block">Customer Segments</td>
+          <td>Pilot users, rescue test teams, academic reviewers</td>
+          <td class="col-p2">+ Provincial gov, national agencies (MONRE/MARD/CCFC), NGOs, farmers</td>
+          <td class="col-p3">+ Connectivity-loss residents, SEA national agencies, insurers, UN/ASEAN, global NGOs</td>
+        </tr>
+        <tr>
+          <td class="col-block">Revenue Streams</td>
+          <td>Research grants, prize money ($500 received)</td>
+          <td class="col-p2">+ Gov white-label $50K–200K/province, NGO SaaS $5K–20K/org, B2B API, freemium</td>
+          <td class="col-p3">+ SEA SaaS licensing, insurance data API, Drone-as-a-Service, AI premium tier</td>
+        </tr>
+        <tr>
+          <td class="col-block">Key Resources</td>
+          <td>iOS app, student team, survey data (548+), prize credentials, endorsements</td>
+          <td class="col-p2">+ Android app, scaled cloud, full-time team, gov pipelines, brand trust</td>
+          <td class="col-p3">+ Drone fleet, Starlink modules, AI/ML models, proprietary SOS dataset, regional teams</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 6 — FOOTER -->
+  <footer class="footer">
+    <div class="f-strong">AquaGuard · HCMUT · March 2026</div>
+    <div>Built by: Nguyen Minh Quan and team</div>
+    <div>Supervisors: Dr. Võ Thanh Hằng · MSc. Bùi Xuân Giang</div>
+    <div>Awards: OISP 2025 First Prize · EPICS 2026 First Prize</div>
+  </footer>
+
+</div>
+
+<script>
+  // ---------- BMC CONTENT DATA ----------
+  var blockMeta = [
+    { key: 'partners',   label: 'Key Partners',           cls: 'block-partners',   color: '#378ADD' },
+    { key: 'activities', label: 'Key Activities',         cls: 'block-activities', color: '#1D9E75' },
+    { key: 'vp',         label: 'Value Propositions',     cls: 'block-vp',         color: '#7F77DD' },
+    { key: 'relations',  label: 'Customer Relationships', cls: 'block-relations',  color: '#D4537E' },
+    { key: 'segments',   label: 'Customer Segments',      cls: 'block-segments',   color: '#D85A30' },
+    { key: 'resources',  label: 'Key Resources',          cls: 'block-resources',  color: '#EF9F27' },
+    { key: 'channels',   label: 'Channels',               cls: 'block-channels',   color: '#639922' },
+    { key: 'costs',      label: 'Cost Structure',         cls: 'block-costs',      color: '#E24B4A' },
+    { key: 'revenue',    label: 'Revenue Streams',        cls: 'block-revenue',    color: '#639922' }
+  ];
+
+  var phases = [
+    {
+      label: 'Phase 1 · MVP & Research',
+      sub: 'Academic project at HCMUT — core rescue features validated with real users',
+      blocks: {
+        partners: [
+          'HCMUT — academic supervisors, labs, research support',
+          'Google Maps API — geolocation and map infrastructure',
+          'Firebase / Cloud providers — backend and database services',
+          'Vietnam Meteorological & Hydrological Service (NCHMF) — weather data',
+          'Thiền viện Vạn Hạnh — frontline rescue charity endorsement',
+          'Quỹ Đất Lành (Canada) — international humanitarian backing',
+          'OSM Vietnam — open-source mapping and routing data',
+          'EPICS in IEEE / OISP — award credentials and institutional trust'
+        ],
+        activities: [
+          'iOS SwiftUI app development — SOS, GPS tracking, flood map',
+          'Node.js backend + PostgreSQL 16 + Firebase + WebSocket infrastructure',
+          'SOS lifecycle system: pending → assigned → in_progress → resolved',
+          'Real-time GPS tracking at 2s intervals, <200ms latency',
+          'React Web dashboard for rescue team admins',
+          'Field testing across 22 provinces — structured feedback loops',
+          '548+ user survey research and analysis',
+          'Grant writing — UNDP, OCHA, EU DG ECHO, AusAid applications'
+        ],
+        vp: [
+          'One-tap SOS — auto GPS capture, no manual location description needed',
+          "Live rescue tracking — victim and rescuer see each other's real-time position",
+          'Pre/in/post-flood lifecycle: preparedness → rescue → family reunification → audit',
+          'Multi-role coordination — citizen + rescuer + admin in one platform',
+          'Structured audit trail — every SOS logged with timestamps and JSONB snapshots',
+          'Offline resilience — auto-reconnect with 3s backoff, HTTP polling fallback',
+          'Community-validated — 548+ survey respondents, 91 field users, 22 provinces',
+          'Open-source core — adaptable to any flood-prone region globally'
+        ],
+        resources: [
+          'iOS SwiftUI app + React 19 Web dashboard + Node.js + PostgreSQL + Firebase',
+          'OSRM routing + Leaflet flood visualization + Firestore flood zones',
+          '548+ user survey dataset across 22 provinces — unique competitive insight',
+          'Multidisciplinary 5-student team (AI & IT, UTS/HCMUT)',
+          'OISP 2025 First Prize + EPICS 2026 First Prize + $500 USD grant',
+          'Endorsement letters: Thiền viện Vạn Hạnh + Quỹ Đất Lành',
+          '1,400+ community followers, 18,000+ content views'
+        ],
+        segments: [
+          'Residents in flood-prone areas (Mekong Delta, Central Highlands, Coast)',
+          'Local rescue teams — commune and district level (test users)',
+          'Local government pilot partners',
+          'Academic reviewers and competition judges'
+        ],
+        relations: [
+          'Community self-service — app download + push notifications',
+          'In-app feedback and field testing loops',
+          'Academic visibility — OISP + EPICS publications and lab presentations',
+          'Social media engagement — 1,400+ followers on Facebook + Zalo'
+        ],
+        channels: [
+          'iOS App Store + TestFlight — direct beta download',
+          'React Web PWA — browser access, no install required',
+          'University demo events and academic conferences (OISP, EPICS)',
+          'Social media — Facebook page + Zalo community',
+          'QR codes on village notice boards — offline to online bridge'
+        ],
+        costs: [
+          'Cloud infrastructure — $200–800/month, auto-scales during off-season',
+          'Team: $0 (volunteer phase) — stipends planned as grants grow',
+          'Mobile development — iOS ongoing updates ~$2,000–5,000/quarter',
+          'Community outreach — workshops + printed materials $300–1,000/quarter',
+          'Security audits — annual data protection compliance $1,000–3,000/year',
+          'Legal & admin — company registration, IP protection ~$500–1,000/year'
+        ],
+        revenue: [
+          'Academic research grants — HCMUT and partner universities',
+          'EPICS in IEEE prize money — $500 received (proof of concept)',
+          'NGO and innovation program grants',
+          'Competition prize money — academic + humanitarian competitions $500–10,000/entry'
+        ]
+      }
+    },
+    {
+      label: 'Phase 2 · Full Deployment',
+      sub: 'App complete on iOS + Android + Web PWA. Active rescue coordination in real flood events.',
+      blocks: {
+        partners: [
+          'All Phase 1 partners — retained and scaled',
+          'Red Cross Vietnam — volunteer rescue network [NEW]',
+          "Provincial People's Committees — government procurement [NEW]",
+          'Viettel / VNPT — SMS/USSD fallback for offline flood zones [NEW]',
+          'UNDP / OCHA / EU DG ECHO / AusAid — humanitarian grant bodies [NEW]',
+          "Vietnam Women's Union — grassroots distribution network [NEW]"
+        ],
+        activities: [
+          'All Phase 1 activities — retained',
+          'Android app launch — full feature parity with iOS [NEW]',
+          'Web PWA full rollout for rescue teams [NEW]',
+          'White-label provincial deployment system [NEW]',
+          'Multi-province rescue coordination at national scale [NEW]',
+          'Government tender preparation and procurement [NEW]',
+          'Post-disaster audit trail analysis and structured reporting [NEW]',
+          'B2B flood alert API — data sold to telcos and weather apps [NEW]'
+        ],
+        vp: [
+          'One-tap SOS — auto GPS, no manual location needed',
+          'Live rescue tracking — victim + rescuer see each other real-time',
+          'Full pre/in/post-flood lifecycle coordination',
+          'Multi-role platform — citizen + rescuer + admin unified',
+          'Structured audit trail — every SOS timestamped, JSONB logged',
+          'Offline resilience — auto-reconnect, HTTP polling fallback',
+          'White-label deployment for provincial governments [NEW]',
+          'Community-validated — 548+ respondents, 22 provinces (proven) [NEW]',
+          'B2B alert API for telcos and weather platforms [NEW]'
+        ],
+        resources: [
+          'All Phase 1 resources — retained',
+          'Android app codebase [NEW]',
+          'Scaled cloud infrastructure (AWS / Google Cloud) [NEW]',
+          'First full-time engineering and operations team [NEW]',
+          'Government data integration pipelines [NEW]',
+          'Established user base and brand trust (1,400+ community) [NEW]',
+          'Endorsement letters from credible institutions on file [NEW]'
+        ],
+        segments: [
+          'Residents in flood-prone areas — Mekong Delta, Central Vietnam, Coast',
+          'Local rescue teams and volunteer groups',
+          'Farmers and rural workers — agricultural flood risk',
+          "Provincial People's Committees — coordination dashboard [NEW]",
+          'National agencies — MONRE, MARD, CCFC [NEW]',
+          'NGOs — Red Cross VN, CARE, Oxfam [NEW]'
+        ],
+        relations: [
+          'Community self-service — app + push notifications',
+          'Per-province government relationship manager [NEW]',
+          'NGO technical working group + dedicated API documentation [NEW]',
+          'Post-disaster follow-up and satisfaction surveys [NEW]',
+          'Community ambassador program — village-level adoption drives [NEW]'
+        ],
+        channels: [
+          'iOS App Store + Android Play Store + TestFlight',
+          'Web PWA — no install friction for rescue coordinators',
+          'Government procurement — provincial white-label agreements [NEW]',
+          'QR codes on village notice boards',
+          'Red Cross Vietnam + Women’s Union distribution networks [NEW]',
+          'Academic conferences — OISP, EPICS, IFRC/OCHA forums [NEW]'
+        ],
+        costs: [
+          'Cloud infrastructure — $200–800/month scaled to users',
+          'Android app development — ~$2,000–5,000/quarter [NEW]',
+          'Government engagement — travel + training $500–2,000/quarter [NEW]',
+          'Community outreach — workshops + materials $300–1,000/quarter',
+          'Full-time team salaries — from stipends to full pay [NEW]',
+          'Security audits + compliance — $1,000–3,000/year',
+          'Disaster ops on-call — 24/7 during peak season $500–2,000/event [NEW]',
+          'Legal + company registration + banking ~$500–1,000/year [NEW]'
+        ],
+        revenue: [
+          'Government white-label licensing — $50,000–200,000/province/year [PRIMARY] [NEW]',
+          'NGO SaaS platform subscriptions — $5,000–20,000/org/year [NEW]',
+          'Humanitarian grants — UNDP, OCHA, EU DG ECHO, AusAid [NEW]',
+          'B2B alert API — flood data sold to telcos and weather apps [NEW]',
+          'Freemium consumer — offline maps, priority alerts $2–5/month [NEW]',
+          'Competition prize money — $500–10,000/entry'
+        ]
+      }
+    },
+    {
+      label: 'Phase 3 · AI + Drone Integration',
+      sub: 'Drone mesh WiFi for connectivity-loss zones. AI rescue dispatch and flood prediction. Southeast Asia expansion.',
+      blocks: {
+        partners: [
+          'All Phase 2 partners — retained and scaled',
+          'Drone manufacturers and UAV research laboratories [NEW]',
+          'Starlink / satellite providers — aerial mesh network backbone [NEW]',
+          'Vietnam Civil Aviation Authority — UAV flight clearance [NEW]',
+          'UN OCHA and ASEAN disaster management bodies [NEW]',
+          'AI and ML research labs — model development partners [NEW]',
+          'Insurance companies — anonymized flood data B2B licensing [NEW]',
+          'Regional governments — Philippines, Indonesia, Thailand [NEW]'
+        ],
+        activities: [
+          'All Phase 2 activities — retained',
+          'Drone mesh WiFi deployment — aerial connectivity for disaster zones [NEW]',
+          'Drone supervision of active rescue operations [NEW]',
+          'FANET (Flying Ad-hoc Network) management and edge computing [NEW]',
+          'Starlink satellite integration for drone mesh backbone [NEW]',
+          'AI rescue dispatch — ML routing optimization for rescue teams [NEW]',
+          'AI flood prediction — historical SOS data hotspot mapping and risk scoring [NEW]',
+          'Insurance data anonymization and B2B API licensing [NEW]',
+          'Multi-country app localization — PH, ID, TH [NEW]'
+        ],
+        vp: [
+          'One-tap SOS — auto GPS, no manual location needed',
+          'Live rescue tracking — victim + rescuer real-time',
+          'Full pre/in/post-flood lifecycle coordination',
+          'Drone mesh WiFi — restores connectivity when infrastructure fails [NEW]',
+          'Drone rescue supervision — aerial situational awareness for commanders [NEW]',
+          'AI dispatch — optimal rescue team routing and resource allocation [NEW]',
+          'AI flood prediction — pre-position resources before disaster peaks [NEW]',
+          'Scalable globally — open-source core, adaptable to any flood region [NEW]',
+          'Insurance risk modeling API — anonymized flood extent data [NEW]'
+        ],
+        resources: [
+          'All Phase 2 resources — retained',
+          'Drone fleet and UAV communication hardware [NEW]',
+          'Satellite communication modules — Starlink integration [NEW]',
+          'AI/ML models — dispatch optimization, flood prediction, risk scoring [NEW]',
+          'Anonymized historical SOS dataset — unique proprietary asset [NEW]',
+          'Regional engineering and operations teams [NEW]',
+          'Multi-country data platform and analytics infrastructure [NEW]'
+        ],
+        segments: [
+          'All Phase 2 segments — retained and scaled',
+          'Residents in connectivity-loss disaster zones (no infrastructure) [NEW]',
+          'National emergency management agencies across SEA [NEW]',
+          'Insurance companies — property and life risk modeling [NEW]',
+          'UN and ASEAN disaster management bodies [NEW]',
+          'International NGOs — Oxfam, CARE, IFRC global operations [NEW]'
+        ],
+        relations: [
+          'All Phase 2 relationships — retained',
+          'AI-personalized flood risk alerts and recommendations [NEW]',
+          'Drone operations support team for government deployments [NEW]',
+          'B2G account management for regional government clients [NEW]',
+          'Insurance B2B data partnership management [NEW]'
+        ],
+        channels: [
+          'All Phase 2 channels — retained',
+          'B2G direct sales to national government agencies [NEW]',
+          'UN and ASEAN partner distribution networks [NEW]',
+          'IFRC and OCHA humanitarian forums and conferences [NEW]',
+          'Insurance industry conferences and data marketplaces [NEW]'
+        ],
+        costs: [
+          'All Phase 2 costs — retained and scaled',
+          'Drone hardware procurement and maintenance [NEW]',
+          'Satellite connectivity fees — Starlink subscription [NEW]',
+          'AI/ML infrastructure — training compute and inference serving [NEW]',
+          'UAV flight operations and regulatory compliance [NEW]',
+          'Regional operations, localization, and support teams [NEW]',
+          'FANET R&D — edge computing and aerial network protocols [NEW]'
+        ],
+        revenue: [
+          'All Phase 2 streams — retained',
+          'SaaS licensing to SEA regional governments [NEW]',
+          'Insurance data licensing — anonymized flood extent B2B API [NEW]',
+          'Drone-as-a-Service — per deployment or annual readiness retainer [NEW]',
+          'AI analytics premium tier — prediction and risk scoring for authorities [NEW]',
+          'UN and ASEAN climate resilience program funding [NEW]',
+          'Open-source community support contracts [NEW]'
+        ]
+      }
+    }
+  ];
+
+  // ---------- RENDER ----------
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderItem(text, phaseIndex) {
+    var html = esc(text);
+    var newBadgeClass = (phaseIndex === 2) ? 'badge-new-p3' : 'badge-new';
+    html = html.replace(/\[PRIMARY\]/g, '<span class="badge badge-primary">PRIMARY</span>');
+    html = html.replace(/\[NEW\]/g, '<span class="badge ' + newBadgeClass + '">NEW</span>');
+    return '<li>' + html + '</li>';
+  }
+
+  function renderPhase(phase, phaseIndex) {
+    var html = '<div class="bmc-phase" id="phase-' + phaseIndex + '">';
+    html += '<div class="phase-intro">';
+    html += '<div class="phase-label">' + esc(phase.label) + '</div>';
+    html += '<div class="phase-sub">' + esc(phase.sub) + '</div>';
+    html += '</div>';
+    html += '<div class="bmc-grid">';
+    blockMeta.forEach(function (meta) {
+      var items = phase.blocks[meta.key] || [];
+      html += '<div class="block ' + meta.cls + '" style="border-top-color:' + meta.color + '">';
+      html += '<div class="block-label">' + esc(meta.label) + '</div>';
+      html += '<ul>';
+      items.forEach(function (it) { html += renderItem(it, phaseIndex); });
+      html += '</ul></div>';
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  var container = document.getElementById('bmcContainer');
+  container.innerHTML = phases.map(renderPhase).join('');
+
+  // ---------- TAB SWITCHING ----------
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var phaseEls = phases.map(function (_, i) { return document.getElementById('phase-' + i); });
+
+  function showPhase(index) {
+    phaseEls.forEach(function (el, i) {
+      if (i === index) {
+        el.style.display = 'block';
+        requestAnimationFrame(function () { el.style.opacity = '1'; });
+      } else {
+        el.style.display = 'none';
+        el.style.opacity = '0';
+      }
+    });
+    tabs.forEach(function (t, i) { t.classList.toggle('active', i === index); });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      showPhase(parseInt(tab.getAttribute('data-phase'), 10));
+    });
+  });
+
+  showPhase(0);
+</script>
+</body>
+</html>
